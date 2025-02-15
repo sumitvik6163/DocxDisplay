@@ -1,23 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import DocViewer, { DocViewerRenderers } from "react-doc-viewer";
+import { pdfjs } from "react-pdf"; 
+import Display from "./COMPONENT/Display";
+
+// Set the workerSrc to avoid module import issues
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 function App() {
+  const docs = [{ uri: "/Display.pdf" }];
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Display />
+      {/* <DocViewer documents={docs} pluginRenderers={DocViewerRenderers} /> */}
     </div>
   );
 }
